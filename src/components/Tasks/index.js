@@ -14,10 +14,14 @@ const Tasks = ({ tasks }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>The table body</td>
-                        <td>with two columns</td>
-                    </tr>
+                    {
+                        tasks.length === 0 ?
+                            tasks.map(task => <Task key={Date.now()} task={task} />)
+                            :
+                            <tr>
+                                <td>Good work there is no  tasks to do!</td>
+                            </tr>
+                    }
                 </tbody>
                 <tfoot>
                     <tr>

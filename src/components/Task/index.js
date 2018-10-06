@@ -2,9 +2,12 @@ import React from 'react'
 
 const Task = () => {
     return (
-        <div>
-            Single task
-        </div>
+        <tr>
+            <td>The table body</td>
+            <td>with two columns</td>
+            <td>The table body</td>
+            <td>with two columns</td>
+        </tr>
     )
 }
 

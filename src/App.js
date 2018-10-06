@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import NewTasks from './components/NewTask'
 import Tasks from './components/Tasks'
 
-import { getTasksFromLocalStorage, taskValidation } from './logic'
+import { getTasksFromLocalStorage, taskValidation, addTaskToLocalStorage, createTask } from './logic'
 class App extends Component {
 
   state = {
