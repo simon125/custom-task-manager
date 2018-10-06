@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import NewTasks from './components/NewTask'
 import Tasks from './components/Tasks'
+import uuid from 'uuid'
 
 import { getTasksFromLocalStorage, taskValidation, addTaskToLocalStorage, createTask } from './logic'
+
 class App extends Component {
 
   state = {
@@ -18,14 +20,17 @@ class App extends Component {
 
     event.preventDefault()
 
-    const taskName = event.target.taskName,
+    // console.log(event.target)
+
+    const taskName = event.target.taskName.value,
       taskPriority = event.target.taskPriority,
-      task = createTask(taskName, taskPriority)
+      task = createTask(taskName, taskPriority, uuid())
+
+    console.log(taskName)
 
     if (taskValidation(task)) {
-
       this.setState({
-        tasks: [...this.state.tasks,]
+        tasks: [...this.state.tasks, task]
       }, () => {
         addTaskToLocalStorage(task)
       })

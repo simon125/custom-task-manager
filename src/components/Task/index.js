@@ -1,12 +1,12 @@
 import React from 'react'
 
-const Task = () => {
+const Task = ({ task }) => {
     return (
         <tr>
-            <td>The table body</td>
-            <td>with two columns</td>
-            <td>The table body</td>
-            <td>with two columns</td>
+            <td>{task.taskName}</td>
+            {/* <td>{task.taskPriority}</td> */}
+            <td>{task.taskStatus}</td>
+            <td><button onClick={() => console.log(12345)}>delete</button></td>
         </tr>
     )
 }

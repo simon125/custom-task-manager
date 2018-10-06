@@ -1,5 +1,5 @@
 export const taskValidation = (task) => {
-    console.log(task)
+    return true
 }
 
 export const getTasksFromLocalStorage = () => {
@@ -8,10 +8,11 @@ export const getTasksFromLocalStorage = () => {
 }
 
 export const addTaskToLocalStorage = (task) => {
-    let tasks = getTasksFromLocalStorage()
-    localStorage.setItem('films', JSON.stringify([...tasks, task]))
+    console.log(getTasksFromLocalStorage())
+    let tasks = [...getTasksFromLocalStorage(), task]
+    localStorage.setItem('tasks', JSON.stringify(tasks))
 }
 
-export const createTask = (taskName, taskPriority) => {
-    return { taskName, taskPriority, taskStatus: false }
+export const createTask = (taskName, taskPriority, id) => {
+    return { id, taskName, taskPriority, taskStatus: false }
 }

@@ -15,8 +15,8 @@ const Tasks = ({ tasks }) => {
                 </thead>
                 <tbody>
                     {
-                        tasks.length === 0 ?
-                            tasks.map(task => <Task key={Date.now()} task={task} />)
+                        tasks.length !== 0 ?
+                            tasks.map(task => <Task key={task.id} task={task} />)
                             :
                             <tr>
                                 <td>Good work there is no  tasks to do!</td>
@@ -25,7 +25,14 @@ const Tasks = ({ tasks }) => {
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td>The table footer</td>
+                        <td>
+                            Rows per page:
+                            <select name="perPage" id="perPage">
+                                <option value="5">5</option>
+                                <option value="5">10</option>
+                                <option value="5">15</option>
+                            </select>
+                        </td>
                         <td>The table footer</td>
                         <td>The table footer</td>
                     </tr>

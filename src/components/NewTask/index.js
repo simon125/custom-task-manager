@@ -1,9 +1,15 @@
 import React from 'react'
 
-const NewTask = () => {
+const NewTask = ({ handleOnSubmit }) => {
     return (
         <div>
-            NewTask
+            <form onSubmit={handleOnSubmit}>
+
+                <input name="taskName" type="text" placeholder="Enter task name..." />
+
+                <input type="submit" value="Add new task" />
+
+            </form>
         </div>
     )
 }
