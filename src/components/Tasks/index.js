@@ -1,50 +1,112 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Task from '../Task'
+import TableHeader from '../TableHeader'
+import TableFooter from '../TableFooter'
 
-const Tasks = ({ tasks, handleOnDeleteClick, handleOnChange }) => {
-    return (
-        <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Task name</th>
-                        <th>Priority</th>
-                        <th>Done</th>
-                        <th>button</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        tasks.length !== 0 ?
-                            tasks.map(task => <Task
-                                key={task.id}
-                                task={task}
-                                handleOnDeleteClick={() => handleOnDeleteClick(task.id)}
-                                handleOnChange={() => handleOnChange(task.id)}
-                            />)
-                            :
-                            <tr>
-                                <td>Good work there is no  tasks to do!</td>
-                            </tr>
-                    }
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td>
-                            Rows per page:
-                            <select name="perPage" id="perPage">
-                                <option value="5">5</option>
-                                <option value="5">10</option>
-                                <option value="5">15</option>
-                            </select>
-                        </td>
-                        <td>The table footer</td>
-                        <td>The table footer</td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-    )
+class Tasks extends Component {
+
+    state = {
+        paginationOption: {
+            currentPage: 1,
+            resultsPerPage: 5
+        },
+        sortOption: {
+            sortByPriority: false,
+            sortByStatus: false,
+            sortAlphabetic: false
+        }
+    }
+
+    onPreviousOrNextClick = (previousOrNext) => {
+        if (previousOrNext) {
+            this.setState({
+                paginationOption: {
+                    ...this.state.paginationOption,
+                    currentPage: this.state.paginationOption.currentPage + 1
+                }
+            })
+        } else {
+
+            this.setState({
+                paginationOption: {
+                    ...this.state.paginationOption,
+                    currentPage: this.state.paginationOption.currentPage - 1
+                }
+            })
+        }
+
+    }
+    changeValuePerPage = (event) => {
+        this.setState({
+            paginationOption: {
+                ...this.state.paginationOption,
+                resultsPerPage: event.target.value
+            }
+        })
+    }
+
+
+    render() {
+        const { tasks, handleOnDeleteClick, handleOnChange } = this.props
+
+        const start = this.state.paginationOption.currentPage
+        const end = start + this.state.paginationOption.resultsPerPage
+        const tasksToRender = tasks.slice(start, end)
+
+        // const renderTodos = currentTodos.map((todo, index) => {
+        //     return <li key={index}>{todo}</li>;
+        // });
+
+
+        // Logic for displaying page numbers
+        // const pageNumbers = [];
+        // for (let i = 1; i <= Math.ceil(todos.length / todosPerPage); i++) {
+        //   pageNumbers.push(i);
+        // }
+
+        // const renderPageNumbers = pageNumbers.map(number => {
+        //   return (
+        //     <button
+        //       key={number}
+        //       id={number}
+        //       onClick={this.handleClick}
+        //     >
+        //       {number}
+        //     </button>
+        //   );
+        // });
+
+
+
+
+
+        return (
+            <div>
+                <table>
+                    <TableHeader />
+                    <tbody>
+                        {
+                            tasks.length !== 0 ?
+                                tasksToRender.map(task => <Task
+                                    key={task.id}
+                                    task={task}
+                                    handleOnDeleteClick={() => handleOnDeleteClick(task.id)}
+                                    handleOnChange={() => handleOnChange(task.id)}
+                                />)
+                                :
+                                <tr>
+                                    <td>Good work there is no  tasks to do!</td>
+                                </tr>
+                        }
+                    </tbody>
+                    <TableFooter
+                        changeValuePerPage={this.changeValuePerPage}
+                        onPreviousOrNextClick={this.onPreviousOrNextClick}
+                    />
+                </table>
+            </div>
+        )
+    }
 }
 
 export default Tasks

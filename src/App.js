@@ -21,7 +21,6 @@ class App extends Component {
     const tasks = getTasksFromLocalStorage()
     this.setState({ tasks })
   }
-
   handleOnSubmit = event => {
 
     event.preventDefault()
@@ -29,6 +28,7 @@ class App extends Component {
     const taskName = event.target.taskName.value,
       taskPriority = event.target.taskPriority.value,
       task = createTask(taskName, taskPriority, uuid())
+
     if (taskValidation(task)) {
       this.setState({
         tasks: [...this.state.tasks, task]
@@ -37,7 +37,6 @@ class App extends Component {
       })
     } else console.log('sth went wrong') //// HERE will be display alert
   }
-
   handleOnDeleteClick = (id) => {
     const tasks = this.state.tasks.filter(task => id !== task.id)
     this.setState({ tasks }, () => {
@@ -57,8 +56,6 @@ class App extends Component {
 
     })
   }
-
-
 
   render() {
 
