@@ -37,6 +37,13 @@ class App extends Component {
     } else console.log('sth went wrong') //// HERE will be display alert
   }
 
+  handleOnDeleteClick = (id) => {
+    const tasks = this.state.tasks.filter(task => id !== task.id)
+    this.setState({ tasks }, () => {
+      localStorage.setItem('tasks', JSON.stringify(tasks))
+    })
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -45,6 +52,7 @@ class App extends Component {
         />
         <Tasks
           tasks={this.state.tasks}
+          handleOnDeleteClick={this.handleOnDeleteClick}
         />
       </React.Fragment>
     )
