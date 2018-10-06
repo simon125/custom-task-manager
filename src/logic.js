@@ -8,8 +8,10 @@ export const getTasksFromLocalStorage = () => {
 }
 
 export const addTaskToLocalStorage = (task) => {
-    console.log(getTasksFromLocalStorage())
     let tasks = [...getTasksFromLocalStorage(), task]
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+}
+export const updateLocalStorage = (tasks) => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
 }
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import Task from '../Task'
 
-const Tasks = ({ tasks, handleOnDeleteClick }) => {
+const Tasks = ({ tasks, handleOnDeleteClick, handleOnChange }) => {
     return (
         <div>
             <table>
@@ -19,7 +19,9 @@ const Tasks = ({ tasks, handleOnDeleteClick }) => {
                             tasks.map(task => <Task
                                 key={task.id}
                                 task={task}
-                                handleOnDeleteClick={() => handleOnDeleteClick(task.id)} />)
+                                handleOnDeleteClick={() => handleOnDeleteClick(task.id)}
+                                handleOnChange={() => handleOnChange(task.id)}
+                            />)
                             :
                             <tr>
                                 <td>Good work there is no  tasks to do!</td>
