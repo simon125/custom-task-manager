@@ -87,7 +87,8 @@ class Tasks extends Component {
                     <tbody>
                         {
                             tasks.length !== 0 ?
-                                tasksToRender.map(task => <Task
+                                tasksToRender.map((task, i) => <Task
+                                    index={i + 1}
                                     key={task.id}
                                     task={task}
                                     handleOnDeleteClick={() => handleOnDeleteClick(task.id)}

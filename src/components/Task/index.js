@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Task = ({ task, handleOnDeleteClick, handleOnChange }) => {
+const Task = ({ task, handleOnDeleteClick, handleOnChange, index }) => {
 
     const statusCheckBox = task.taskStatus ?
         <input onChange={handleOnChange} type="checkbox" defaultChecked />
@@ -9,6 +9,7 @@ const Task = ({ task, handleOnDeleteClick, handleOnChange }) => {
 
     return (
         <tr>
+            <td>{index})  </td>
             <td>{task.taskName}</td>
             <td>{task.taskPriority}</td>
             <td>{statusCheckBox}</td>
