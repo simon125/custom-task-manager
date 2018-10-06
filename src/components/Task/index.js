@@ -10,7 +10,7 @@ const Task = ({ task, handleOnDeleteClick, handleOnChange }) => {
     return (
         <tr>
             <td>{task.taskName}</td>
-            {/* <td>{task.taskPriority}</td> */}
+            <td>{task.taskPriority}</td>
             <td>{statusCheckBox}</td>
             <td><button onClick={handleOnDeleteClick}>delete</button></td>
         </tr>

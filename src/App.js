@@ -27,7 +27,7 @@ class App extends Component {
     event.preventDefault()
 
     const taskName = event.target.taskName.value,
-      taskPriority = event.target.taskPriority,
+      taskPriority = event.target.taskPriority.value,
       task = createTask(taskName, taskPriority, uuid())
     if (taskValidation(task)) {
       this.setState({
