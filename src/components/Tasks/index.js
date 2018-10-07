@@ -26,7 +26,6 @@ class Tasks extends Component {
                 }
             })
         } else {
-
             this.setState({
                 paginationOption: {
                     ...this.state.paginationOption,
@@ -37,6 +36,7 @@ class Tasks extends Component {
 
     }
     changeValuePerPage = (event) => {
+        console.log("to jest wartość per page ", event.target.value)
         this.setState({
             paginationOption: {
                 ...this.state.paginationOption,
@@ -45,14 +45,15 @@ class Tasks extends Component {
         })
     }
 
-
     render() {
         const { tasks, handleOnDeleteClick, handleOnChange } = this.props
 
-        const start = this.state.paginationOption.currentPage
-        const end = start + this.state.paginationOption.resultsPerPage
+        const start = this.state.paginationOption.currentPage * 1
+        const end = start * 1 + this.state.paginationOption.resultsPerPage * 1
         const tasksToRender = tasks.slice(start, end)
 
+        console.table(tasksToRender)
+        console.log("start: ", start, " end: ", end)
         // const renderTodos = currentTodos.map((todo, index) => {
         //     return <li key={index}>{todo}</li>;
         // });
