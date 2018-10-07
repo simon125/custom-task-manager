@@ -33,7 +33,6 @@ class Tasks extends Component {
                 }
             })
         }
-
     }
     changeValuePerPage = (event) => {
         console.log("to jest wartość per page ", event.target.value)
@@ -44,16 +43,13 @@ class Tasks extends Component {
             }
         })
     }
-
     render() {
         const { tasks, handleOnDeleteClick, handleOnChange } = this.props
 
         const start = this.state.paginationOption.currentPage * 1
         const end = start * 1 + this.state.paginationOption.resultsPerPage * 1
         const tasksToRender = tasks.slice(start, end)
-
-        console.table(tasksToRender)
-        console.log("start: ", start, " end: ", end)
+        console.log("tasks.length:  ", tasks)
         // const renderTodos = currentTodos.map((todo, index) => {
         //     return <li key={index}>{todo}</li>;
         // });
@@ -77,10 +73,6 @@ class Tasks extends Component {
         //   );
         // });
 
-
-
-
-
         return (
             <div>
                 <table>
@@ -102,6 +94,9 @@ class Tasks extends Component {
                         }
                     </tbody>
                     <TableFooter
+                        indexOfLastTodo={tasks.length}
+                        start={start}
+                        end={end}
                         changeValuePerPage={this.changeValuePerPage}
                         onPreviousOrNextClick={this.onPreviousOrNextClick}
                     />

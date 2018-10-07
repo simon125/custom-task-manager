@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TableFooter = ({ onPreviousOrNextClick, changeValuePerPage }) => {
+const TableFooter = ({ onPreviousOrNextClick, changeValuePerPage, indexOfLastTodo, start, end }) => {
     return (
         <tfoot>
             <tr>
@@ -12,6 +12,7 @@ const TableFooter = ({ onPreviousOrNextClick, changeValuePerPage }) => {
                         <option value="15">15</option>
                     </select>
                 </td>
+                <td>{start} - {end} of {indexOfLastTodo}</td>
                 <td><button onClick={() => onPreviousOrNextClick(false)}>previous</button></td>
                 <td><button onClick={() => onPreviousOrNextClick(true)}>next</button></td>
             </tr>
