@@ -50,28 +50,6 @@ class Tasks extends Component {
         const end = start * 1 + this.state.paginationOption.resultsPerPage * 1
         const tasksToRender = tasks.slice(start, end)
         console.log("tasks.length:  ", tasks)
-        // const renderTodos = currentTodos.map((todo, index) => {
-        //     return <li key={index}>{todo}</li>;
-        // });
-
-
-        // Logic for displaying page numbers
-        // const pageNumbers = [];
-        // for (let i = 1; i <= Math.ceil(todos.length / todosPerPage); i++) {
-        //   pageNumbers.push(i);
-        // }
-
-        // const renderPageNumbers = pageNumbers.map(number => {
-        //   return (
-        //     <button
-        //       key={number}
-        //       id={number}
-        //       onClick={this.handleClick}
-        //     >
-        //       {number}
-        //     </button>
-        //   );
-        // });
 
         return (
             <div>
@@ -94,6 +72,8 @@ class Tasks extends Component {
                         }
                     </tbody>
                     <TableFooter
+                        lenghtTasksToRender={tasksToRender.length}
+                        resultsPerPage={this.state.paginationOption.resultsPerPage}
                         indexOfLastTodo={tasks.length}
                         start={start}
                         end={end}

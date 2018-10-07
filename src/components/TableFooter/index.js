@@ -1,6 +1,14 @@
 import React from 'react'
 
 const TableFooter = ({ onPreviousOrNextClick, changeValuePerPage, indexOfLastTodo, start, end }) => {
+
+    const onPreviousClick = () => {
+        if (start > 0) onPreviousOrNextClick(false)
+    }
+    const onNextClick = () => {
+        if (end < indexOfLastTodo) onPreviousOrNextClick(true)
+    }
+
     return (
         <tfoot>
             <tr>
@@ -13,8 +21,8 @@ const TableFooter = ({ onPreviousOrNextClick, changeValuePerPage, indexOfLastTod
                     </select>
                 </td>
                 <td>{start} - {end} of {indexOfLastTodo}</td>
-                <td><button onClick={() => onPreviousOrNextClick(false)}>previous</button></td>
-                <td><button onClick={() => onPreviousOrNextClick(true)}>next</button></td>
+                <td><button onClick={onPreviousClick}>previous</button></td>
+                <td><button onClick={onNextClick}>next</button></td>
             </tr>
         </tfoot>
     )
