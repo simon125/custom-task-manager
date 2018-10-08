@@ -13,7 +13,7 @@ List have a nice UI with basic functions: sort functions, pagination, adding and
 
 ## How to install or watch app
 
-You can easily click on the [LINK](http://custom-todo-app.surge.sh/) or you can watch my app on your localhost
+You can easily click on the [LINK](http://custom-todo-app.surge.sh) or you can watch my app on your localhost
 you will need node environment and npm on your machine and web browser (CHROME)
 
 Install the dependencies and start the server.
