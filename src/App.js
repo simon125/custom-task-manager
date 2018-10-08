@@ -29,12 +29,13 @@ class App extends Component {
       taskPriority = event.target.taskPriority.value,
       task = createTask(taskName, taskPriority, uuid())
 
-    if (taskValidation(task)) {
+    if (taskValidation(task, this.state.tasks)) {
       this.setState({
         tasks: [...this.state.tasks, task]
       }, () => {
         addTaskToLocalStorage(task)
       })
+      event.target.taskName.value = ''
     } else console.log('sth went wrong') //// HERE will be display alert
   }
   handleOnDeleteClick = (id) => {
