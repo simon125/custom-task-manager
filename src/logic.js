@@ -1,11 +1,11 @@
 export const taskValidation = (newTask, existingTasks) => {
 
-    if (existingTasks.length === 0 && newTask.taskName.trim() !== '') return true
+    if (existingTasks.length === 0 && newTask.taskName.trim() !== '' && newTask.taskName.length <= 27) return true
 
     const isAlreadyExist = existingTasks.every(existingTask => existingTask.taskName.trim() !== newTask.taskName.trim())
 
     if (!isAlreadyExist) return false
-    else if (newTask.taskName.trim() !== '') return true
+    else if (newTask.taskName.trim() !== '' && newTask.taskName.length <= 27) return true
     else return false
 }
 export const getTasksFromLocalStorage = () => {

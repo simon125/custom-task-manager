@@ -1,0 +1,20 @@
+
+    .alert{
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 70%;
+        height: 100px;
+        z-index: 1;
+        background: rgba(48, 42, 42, 0.99);
+        text-align: center;
+        line-height: 100px;
+        font-size: 20px;
+        color: #eee;
+        }
+     
+   
+ 
+
+

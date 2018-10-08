@@ -6,7 +6,8 @@ const NewTask = ({ handleOnSubmit }) => {
         <div className="form-container">
             <header className="form-container__header">Create new task</header>
             <form onSubmit={handleOnSubmit}>
-                <input className="form-container__task-name" autoComplete="off" id="taskName" name="taskName" type="text" placeholder="Enter task name..." />
+                <input title="max 27 characters" className="form-container__task-name" autoComplete="off" id="taskName" name="taskName" type="text" placeholder="Enter task name..." />
+
                 <p className="choice-label">
                     Choose priority
                 </p>

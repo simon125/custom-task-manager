@@ -112,7 +112,7 @@ class Tasks extends Component {
                                 />
                             })
                             :
-                            <p>Good work there is no  tasks to do!</p>
+                            <p className="alert-no-tasks">Good job You have nothing to do!</p>
                     }
                     <TableFooter
                         resultsPerPage={this.state.paginationOption.resultsPerPage}

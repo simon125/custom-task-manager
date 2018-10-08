@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NewTasks from './components/NewTask'
 import Tasks from './components/Tasks'
+import Alert from './components/Alert/index'
 import uuid from 'uuid'
 import './app.css'
 
@@ -15,7 +16,8 @@ import {
 class App extends Component {
 
   state = {
-    tasks: []
+    tasks: [],
+    showAlert: false
   }
 
   componentDidMount() {
@@ -37,7 +39,7 @@ class App extends Component {
         addTaskToLocalStorage(task)
       })
       event.target.taskName.value = ''
-    } else console.log('sth went wrong') //// HERE will be display alert
+    } else this.setState({ showAlert: true }, () => setTimeout(() => this.setState({ showAlert: false }), 2000))
   }
   handleOnDeleteClick = (id) => {
     const tasks = this.state.tasks.filter(task => id !== task.id)
@@ -55,19 +57,15 @@ class App extends Component {
     })
     this.setState({ tasks }, () => {
       updateLocalStorage(tasks)
-
     })
   }
-
   render() {
-
-    console.log(this.state.tasks)
-
     return (
       <div className="app">
         <NewTasks
           handleOnSubmit={this.handleOnSubmit}
         />
+        <Alert showAlert={this.state.showAlert} />
         <Tasks
           tasks={this.state.tasks}
           handleOnDeleteClick={this.handleOnDeleteClick}
