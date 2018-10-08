@@ -5,7 +5,7 @@ const NewTask = ({ handleOnSubmit }) => {
         <div>
             <form onSubmit={handleOnSubmit}>
 
-                <input name="taskName" type="text" placeholder="Enter task name..." />
+                <input autoComplete="off" name="taskName" type="text" placeholder="Enter task name..." />
                 <ul>
                     <li>
                         <label htmlFor="highPriority">High</label>

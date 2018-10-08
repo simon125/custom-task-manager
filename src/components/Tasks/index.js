@@ -3,7 +3,7 @@ import Task from '../Task'
 import TableHeader from '../TableHeader'
 import TableFooter from '../TableFooter'
 
-import { sortAphabetic, sortByStatus, sortByPriority } from '../../logic'
+import { sortAphabetic, sortByStatus, sortByPriority, paginateTasks } from '../../logic'
 
 class Tasks extends Component {
 
@@ -44,71 +44,52 @@ class Tasks extends Component {
         })
     }
     handleOnTaskName = () => {
-        if (this.state.sortOption.sortAlphabetic === null) {
-            this.setState({
-                sortOption: {
-                    sortByPriority: null,
-                    sortByStatus: null,
-                    sortAlphabetic: true
-                }
-            })
-        } else
-            this.setState({
-                sortOption: {
-                    sortByPriority: null,
-                    sortByStatus: null,
-                    sortAlphabetic: !this.state.sortOption.sortAlphabetic
-                }
-            })
+        let sortAlphabetic = null
+        if (this.state.sortOption.sortAlphabetic === null) sortAlphabetic = true
+        else sortAlphabetic = !this.state.sortOption.sortAlphabetic
+
+        this.setState({
+            sortOption: {
+                sortByPriority: null,
+                sortByStatus: null,
+                sortAlphabetic
+            }
+        })
     }
     handleOnPriorityClick = () => {
-        if (this.state.sortOption.sortByPriority === null) {
-            this.setState({
-                sortOption: {
-                    sortAlphabetic: null,
-                    sortByStatus: null,
-                    sortByPriority: true
-                }
-            })
-        } else
-            this.setState({
-                sortOption: {
-                    sortAlphabetic: null,
-                    sortByStatus: null,
-                    sortByPriority: !this.state.sortOption.sortByPriority
-                }
-            })
+        let sortByPriority = null
+        if (this.state.sortOption.sortByPriority === null) sortByPriority = true
+        else sortByPriority = !this.state.sortOption.sortByPriority
+
+        this.setState({
+            sortOption: {
+                sortAlphabetic: null,
+                sortByStatus: null,
+                sortByPriority
+            }
+        })
     }
     handleOnDoneClick = () => {
-        if (this.state.sortOption.sortByStatus === null) {
-            this.setState({
-                sortOption: {
-                    sortByPriority: null,
-                    sortAlphabetic: null,
-                    sortByStatus: true
-                }
-            })
-        } else
-            this.setState({
-                sortOption: {
-                    sortByPriority: null,
-                    sortAlphabetic: null,
-                    sortByStatus: !this.state.sortOption.sortByStatus
-                }
-            })
+        let sortByStatus = null
+        if (this.state.sortOption.sortByStatus === null) sortByStatus = true
+        else sortByStatus = !this.state.sortOption.sortByStatus
+
+        this.setState({
+            sortOption: {
+                sortByPriority: null,
+                sortAlphabetic: null,
+                sortByStatus
+            }
+        })
     }
     render() {
         const { tasks, handleOnDeleteClick, handleOnChange } = this.props
         let sortedTasks = sortAphabetic(this.state.sortOption.sortAlphabetic, tasks)
+
         sortedTasks = sortByStatus(this.state.sortOption.sortByStatus, sortedTasks)
         sortedTasks = sortByPriority(this.state.sortOption.sortByPriority, sortedTasks)
 
-        ///////PAGINATION////// too function
-        const start = this.state.paginationOption.currentPage * 1
-        const end = start * 1 + this.state.paginationOption.resultsPerPage * 1
-        const paginatedTasks = sortedTasks.slice(start, end)
-
-        // console.log("tasks.length:  ", tasks)
+        const { paginatedTasks, start, end } = paginateTasks(this.state.paginationOption.currentPage, this.state.paginationOption.resultsPerPage, sortedTasks)
 
         return (
             <div>
@@ -128,8 +109,7 @@ class Tasks extends Component {
                                         handleOnDeleteClick={() => handleOnDeleteClick(task.id)}
                                         handleOnChange={() => handleOnChange(task.id)}
                                     />
-                                }
-                                )
+                                })
                                 :
                                 <tr>
                                     <td>Good work there is no  tasks to do!</td>

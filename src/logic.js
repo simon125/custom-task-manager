@@ -19,7 +19,6 @@ export const addTaskToLocalStorage = (task) => {
 export const updateLocalStorage = (tasks) => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
 }
-
 export const createTask = (taskName, taskPriority, id) => {
     return { id, taskName, taskPriority, taskStatus: false }
 }
@@ -44,7 +43,6 @@ export const sortAphabetic = (value, tasks) => {
             })
     }
 }
-
 export const sortByStatus = (value, tasks) => {
     if (value === null) {
         return tasks
@@ -65,4 +63,9 @@ export const sortByPriority = (value, tasks) => {
 
     if (value) return [...arr1, ...arr2, ...arr3]
     else return [...arr3, ...arr2, ...arr1]
+}
+export const paginateTasks = (currentPage, resultsPerPage, tasks) => {
+    const start = (currentPage * 1) - 1
+    const end = start * 1 + resultsPerPage * 1
+    return { paginatedTasks: tasks.slice(start, end), start, end }
 }
