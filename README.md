@@ -25,6 +25,10 @@ $ npm install
 $ npm start
 ```
 
+## HOW IT WORKS
+
+![HOW to use it](./gifs/howToUse.gif)
+
 ### TODO
 
 - improve and refactor CSS
