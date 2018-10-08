@@ -25,9 +25,11 @@ $ npm install
 $ npm start
 ```
 
-## HOW IT WORKS
+## HOW IT WORKS and LOOKS
 
 ![HOW to use it](./gifs/howToUse.gif)
+
+![HOW to use it](./gifs/howToUse2.gif)
 
 ### TODO
 
