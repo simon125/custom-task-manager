@@ -3,7 +3,7 @@ import Task from '../Task'
 import TableHeader from '../TableHeader'
 import TableFooter from '../TableFooter'
 
-import { sortAphabetic } from '../../logic'
+import { sortAphabetic, sortByStatus } from '../../logic'
 
 class Tasks extends Component {
 
@@ -78,16 +78,25 @@ class Tasks extends Component {
             })
     }
     handleOnDoneClick = () => {
-        this.setState({
-            sortOption: {
-                ...this.state.sortOption,
-                sortByStatus: true
-            }
-        })
+        if (this.state.sortOption.sortByStatus === null) {
+            this.setState({
+                sortOption: {
+                    ...this.state.sortOption,
+                    sortByStatus: true
+                }
+            })
+        } else
+            this.setState({
+                sortOption: {
+                    ...this.state.sortOption,
+                    sortByStatus: !this.state.sortOption.sortByStatus
+                }
+            })
     }
     render() {
         const { tasks, handleOnDeleteClick, handleOnChange } = this.props
-        const sortedTasks = sortAphabetic(this.state.sortOption.sortAlphabetic, tasks)
+        let sortedTasks = sortAphabetic(this.state.sortOption.sortAlphabetic, tasks)
+        sortedTasks = sortByStatus(this.state.sortOption.sortByStatus, sortedTasks)
         const start = this.state.paginationOption.currentPage * 1
         const end = start * 1 + this.state.paginationOption.resultsPerPage * 1
         const paginatedTasks = sortedTasks.slice(start, end)

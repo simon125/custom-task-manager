@@ -1,11 +1,11 @@
-export const taskValidation = (task, tasks) => {
+export const taskValidation = (newTask, existingTasks) => {
 
-    if (tasks.length === 0 && task.taskName.trim() !== '') return true
+    if (existingTasks.length === 0 && newTask.taskName.trim() !== '') return true
 
-    const isAlreadyExist = tasks.every(currentTask => currentTask.taskName.trim() !== task.taskName.trim())
+    const isAlreadyExist = existingTasks.every(existingTask => existingTask.taskName.trim() !== newTask.taskName.trim())
 
     if (!isAlreadyExist) return false
-    else if (task.taskName.trim() !== '') return true
+    else if (newTask.taskName.trim() !== '') return true
     else return false
 }
 export const getTasksFromLocalStorage = () => {
@@ -23,6 +23,7 @@ export const updateLocalStorage = (tasks) => {
 export const createTask = (taskName, taskPriority, id) => {
     return { id, taskName, taskPriority, taskStatus: false }
 }
+
 export const sortAphabetic = (value, tasks) => {
     if (value === null) {
         return tasks
@@ -44,8 +45,15 @@ export const sortAphabetic = (value, tasks) => {
     }
 }
 
-export const sortByStatus = (value) => {
+export const sortByStatus = (value, tasks) => {
+    if (value === null) {
+        return tasks
+    }
+    const arr1 = tasks.filter(task => task.taskStatus === true)
+    const arr2 = tasks.filter(task => task.taskStatus === false)
 
+    if (value) return [...arr1, ...arr2]
+    else return [...arr2, ...arr1]
 }
 export const sortByPriority = (value) => {
 
