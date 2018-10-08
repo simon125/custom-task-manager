@@ -1,7 +1,7 @@
 .header-container__task{
     font-size: 20px;
     color: #eee;
-    width: 80vw;
+    width: 100%;
     height: 70px;
     background-color: rgb(70, 59, 53);
     line-height: 70px;
@@ -28,4 +28,41 @@
 }
 .scale-on-hover:hover{
     transform: scale(1.2);
+}
+@media screen and (max-width: 700px ){
+    .header-container__task{
+        font-size: 15px;
+        height: 40px;
+        line-height: 40px; 
+    }
+    .header-container__task--name{
+        padding-left: 1.5%;
+        width: 58%;
+    }
+    .header-container__task--priority{
+        width: 12%;
+    }
+    .header-container__task--status{
+        width: 12%;
+    }
+    .header-container__task--btn{
+        width: 8%;
+    }
+    .scale-on-hover{
+        display: inline-block;
+        cursor: pointer;
+        transition: transform 0.5s;
+    }
+    .scale-on-hover:hover{
+        transform: scale(1.2);
+    }
+}
+@media screen and (max-width: 300px ){
+    
+    .header-container__task{
+        font-size: 10px;
+        height: 40px;
+        line-height: 40px; 
+    }
+
 }

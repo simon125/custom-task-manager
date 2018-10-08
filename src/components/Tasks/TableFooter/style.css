@@ -17,11 +17,57 @@ select{
 .nav-item{
     margin-right: 50px;
 }
-button{
+.footer__button{
     border: none;
     outline: none;
     background: transparent;
     font-size: 23px;
     color: #222;
     cursor: pointer;
+}
+.footer__button:first-of-type{
+    margin-right: 30px;
+}
+@media screen and (max-width: 700px ){
+    .nav-item{
+        margin-right: 20px;
+    }
+    nav{
+        height: 80px;
+        line-height: 80px;
+        font-size: 15px;
+        display: flex;
+        justify-content: space-around;
+    }
+    select{
+        cursor: pointer;
+        margin-left: 5px;
+        background: transparent;
+        border: none;
+        width: 70px;
+        font-size: 15px;
+        outline: none;
+    }
+    .title{
+        display: none;
+    }
+  
+}
+@media screen and (max-width: 280px ){
+    
+    select#perPage{
+        display: none;
+    }
+  .page-numbers{
+      display: none;
+  }
+  .footer__buttons{
+      display: flex;
+      justify-content: space-around;
+      width:100%;
+  }
+  .footer__button{
+        font-size:30px;
+    }
+
 }

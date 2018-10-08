@@ -9,7 +9,6 @@ const TableFooter = ({ onPreviousOrNextClick, changeValuePerPage, indexOfLastTod
     const onNextClick = () => {
         if (end < indexOfLastTodo) onPreviousOrNextClick(true)
     }
-
     return (
         <li>
             <footer>
@@ -25,14 +24,12 @@ const TableFooter = ({ onPreviousOrNextClick, changeValuePerPage, indexOfLastTod
                             <option value="15">15</option>
                         </select>
                     </p>
-                    <p className="nav-item">{start} - {end} of {indexOfLastTodo}</p>
-                    <p className="nav-item">
-                        <button onClick={onPreviousClick}>
+                    <p className="nav-item page-numbers">{start} - {end} of {indexOfLastTodo}</p>
+                    <p className="nav-item footer__buttons">
+                        <button className="footer__button" onClick={onPreviousClick}>
                             <i className="fas fa-angle-left"></i>
                         </button>
-                    </p>
-                    <p className="nav-item">
-                        <button onClick={onNextClick}>
+                        <button className="footer__button" onClick={onNextClick}>
                             <i className="fas fa-angle-right"></i>
                         </button>
                     </p>

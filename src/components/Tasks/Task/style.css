@@ -1,5 +1,5 @@
 .tasks-container__task{
-    width: 80vw;
+    width: 100%;
     height: 70px;
     line-height: 70px;
     border-bottom: 1px solid rgb(182, 160, 145);
@@ -36,4 +36,45 @@
 }
 .tasks-container__task:hover .tasks-container__task--btn {
     opacity: 1;
+}
+@media screen and (max-width: 700px ){
+    .tasks-container__task{
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        border-bottom: 1px solid rgb(182, 160, 145);
+        display: flex;
+        justify-content: space-between;
+    }
+    .tasks-container__task--name{
+        font-size: 12px;
+        padding-left: 1.5%;
+        height: 100%;
+        width: 70%;
+        text-align: left;
+    }
+    .tasks-container__task--priority{
+        font-size: 12px;
+        width: 20%;
+    }
+    .tasks-container__task--status{
+        width: 10%;
+        cursor: pointer;
+        font-size: 15px;
+    }
+    .tasks-container__task--btn{
+        color: rgb(80, 81, 119);
+        transition: opacity 0.5s;
+        font-size: 15px;
+        border: none;
+        background: transparent;
+        opacity: 0
+    }
+}
+@media screen and (max-width: 280px ){
+    
+    .tasks-container__task--name{
+        font-size: 10px;
+    }
+
 }
