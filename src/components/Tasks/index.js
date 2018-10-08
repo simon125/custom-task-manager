@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import Task from '../Task'
-import TableHeader from '../TableHeader'
-import TableFooter from '../TableFooter'
+import Task from './Task'
+import TableHeader from './TableHeader'
+import TableFooter from './TableFooter'
 
 import { sortAphabetic, sortByStatus, sortByPriority, paginateTasks } from '../../logic'
+
+import './style.css'
 
 class Tasks extends Component {
 
@@ -92,30 +94,26 @@ class Tasks extends Component {
         const { paginatedTasks, start, end } = paginateTasks(this.state.paginationOption.currentPage, this.state.paginationOption.resultsPerPage, sortedTasks)
 
         return (
-            <div>
-                <table>
+            <div className="container">
+                <ul className="tasks-container">
                     <TableHeader
                         handleOnTaskName={this.handleOnTaskName}
                         handleOnPriorityClick={this.handleOnPriorityClick}
                         handleOnDoneClick={this.handleOnDoneClick} />
-                    <tbody>
-                        {
-                            tasks.length !== 0 ?
-                                paginatedTasks.map((task, i) => {
-                                    return <Task
-                                        index={i + 1}
-                                        key={task.id}
-                                        task={task}
-                                        handleOnDeleteClick={() => handleOnDeleteClick(task.id)}
-                                        handleOnChange={() => handleOnChange(task.id)}
-                                    />
-                                })
-                                :
-                                <tr>
-                                    <td>Good work there is no  tasks to do!</td>
-                                </tr>
-                        }
-                    </tbody>
+                    {
+                        tasks.length !== 0 ?
+                            paginatedTasks.map((task, i) => {
+                                return <Task
+                                    index={i + 1}
+                                    key={task.id}
+                                    task={task}
+                                    handleOnDeleteClick={() => handleOnDeleteClick(task.id)}
+                                    handleOnChange={() => handleOnChange(task.id)}
+                                />
+                            })
+                            :
+                            <p>Good work there is no  tasks to do!</p>
+                    }
                     <TableFooter
                         resultsPerPage={this.state.paginationOption.resultsPerPage}
                         indexOfLastTodo={tasks.length}
@@ -124,7 +122,7 @@ class Tasks extends Component {
                         changeValuePerPage={this.changeValuePerPage}
                         onPreviousOrNextClick={this.onPreviousOrNextClick}
                     />
-                </table>
+                </ul>
             </div>
         )
     }

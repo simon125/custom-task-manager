@@ -1,0 +1,70 @@
+.form-container{
+    margin-top: 50px;
+    width: 80vw;
+    border: 1px solid rgb(182, 160, 145);
+    box-shadow: 0px 0px 0px 9px rgb(221, 216, 221);
+    font-size: 20px;
+}
+.form-container__header{
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+    color: #eee;
+    background-color: rgb(70, 59, 53);
+}
+.form-container__task-name{
+    border: none;
+    background: transparent;
+    padding-left: 20px;
+    margin: 20px 10px;
+    font-size: 20px;
+    outline: none;
+    border-bottom: 1px solid rgb(70, 59, 53);
+    transition: transform 0.5s;
+}
+.form-container__task-name:focus{
+    transform: scale(1.05);
+}
+.form-container__task-name::placeholder{
+    font-size: 20px;
+}
+.form-container__radio-buttons{
+    display: none;  
+}
+.form-container__labels{
+    color: rgb(95, 83, 76);
+}
+.form-container__radio-buttons:checked + .form-container__labels{
+    font-weight: bold;
+    transform: scale(2);
+    font-size: 24px;
+    color: rgb(80, 72, 67);
+}
+.form-container__priority{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+.form-container__submit{
+    background: transparent;
+    outline: none;
+    border: none;
+    margin: 30px auto;
+    display: block;
+    padding: 10px 0;
+    width: 50%;
+    background:  rgb(70, 59, 53);
+    color: #eee;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.form-container__submit:hover{
+    transform: scale(1.05);
+}
+.choice-label{
+    margin-left: 20px;
+    color: rgb(95, 83, 76);
+}
+
+

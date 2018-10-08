@@ -1,0 +1,10 @@
+.container{
+    margin-top: 50px;
+    width: 80vw;
+}
+.tasks-container{
+    border: 1px solid rgb(182, 160, 145);
+    list-style: none;
+    box-shadow: 0px 0px 0px 9px rgb(221, 216, 221);
+    margin-bottom: 100px;
+}

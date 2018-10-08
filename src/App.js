@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import NewTasks from './components/NewTask'
 import Tasks from './components/Tasks'
 import uuid from 'uuid'
+import './app.css'
 
 import {
   getTasksFromLocalStorage,
@@ -63,7 +64,7 @@ class App extends Component {
     console.log(this.state.tasks)
 
     return (
-      <React.Fragment>
+      <div className="app">
         <NewTasks
           handleOnSubmit={this.handleOnSubmit}
         />
@@ -72,7 +73,7 @@ class App extends Component {
           handleOnDeleteClick={this.handleOnDeleteClick}
           handleOnChange={this.handleOnChange}
         />
-      </React.Fragment>
+      </div>
     )
   }
 }

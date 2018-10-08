@@ -1,0 +1,39 @@
+.tasks-container__task{
+    width: 80vw;
+    height: 70px;
+    line-height: 70px;
+    border-bottom: 1px solid rgb(182, 160, 145);
+    display: flex;
+    justify-content: space-between;
+}
+.tasks-container__task--name{
+    font-size: 20px;
+    padding-left: 1.5%;
+    height: 100%;
+    width: 50%;
+    text-align: left;
+}
+.tasks-container__task--priority{
+    
+    font-size: 20px;
+    width: 20%;
+}
+.tasks-container__task--status{
+    width: 10%;
+    cursor: pointer;
+    font-size: 25px;
+}
+.tasks-container__task--btn{
+    color: rgb(80, 81, 119);
+    transition: opacity 0.5s;
+    font-size: 20px;
+    border: none;
+    background: transparent;
+    opacity: 0
+}
+.btn-wrapper{
+    width: 10%;
+}
+.tasks-container__task:hover .tasks-container__task--btn {
+    opacity: 1;
+}

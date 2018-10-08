@@ -1,28 +1,30 @@
 import React from 'react'
+import './style.css'
 
 const NewTask = ({ handleOnSubmit }) => {
     return (
-        <div>
+        <div className="form-container">
+            <header className="form-container__header">Create new task</header>
             <form onSubmit={handleOnSubmit}>
-
-                <input autoComplete="off" name="taskName" type="text" placeholder="Enter task name..." />
-                <ul>
+                <input className="form-container__task-name" autoComplete="off" id="taskName" name="taskName" type="text" placeholder="Enter task name..." />
+                <p className="choice-label">
+                    Choose priority
+                </p>
+                <ul className="form-container__priority">
                     <li>
-                        <label htmlFor="highPriority">High</label>
-                        <input defaultChecked value="High" type="radio" name="taskPriority" id="highPriority" />
+                        <input className="form-container__radio-buttons" defaultChecked value="High" type="radio" name="taskPriority" id="highPriority" />
+                        <label className="form-container__labels" htmlFor="highPriority">High</label>
                     </li>
                     <li>
-                        <label htmlFor="mediumPriority">Medium</label>
-                        <input value="Medium" type="radio" name="taskPriority" id="mediumPriority" />
+                        <input className="form-container__radio-buttons" value="Medium" type="radio" name="taskPriority" id="mediumPriority" />
+                        <label className="form-container__labels" htmlFor="mediumPriority">Medium</label>
                     </li>
                     <li>
-                        <label htmlFor="lowPriority">Low</label>
-                        <input value="Low" type="radio" name="taskPriority" id="lowPriority" />
+                        <input className="form-container__radio-buttons" value="Low" type="radio" name="taskPriority" id="lowPriority" />
+                        <label className="form-container__labels" htmlFor="lowPriority">Low</label>
                     </li>
                 </ul>
-
-                <input type="submit" value="Add new task" />
-
+                <input className="form-container__submit" type="submit" value="Add new task" />
             </form>
         </div>
     )

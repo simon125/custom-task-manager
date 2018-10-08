@@ -1,0 +1,31 @@
+.header-container__task{
+    font-size: 20px;
+    color: #eee;
+    width: 80vw;
+    height: 70px;
+    background-color: rgb(70, 59, 53);
+    line-height: 70px;
+    display: flex;
+    justify-content: space-between;
+}
+.header-container__task--name{
+    padding-left: 1.5%;
+    width: 50%;
+}
+.header-container__task--priority{
+    width: 20%;
+}
+.header-container__task--status{
+    width: 10%;
+}
+.header-container__task--btn{
+    width: 10%;
+}
+.scale-on-hover{
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+.scale-on-hover:hover{
+    transform: scale(1.2);
+}
