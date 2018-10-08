@@ -25,7 +25,7 @@ $ npm install
 $ npm start
 ```
 
-###TODO
+### TODO
 
 - improve and refactor CSS
 
