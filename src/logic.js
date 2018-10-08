@@ -23,19 +23,19 @@ export const updateLocalStorage = (tasks) => {
 export const createTask = (taskName, taskPriority, id) => {
     return { id, taskName, taskPriority, taskStatus: false }
 }
-
 export const sortAphabetic = (value, tasks) => {
     if (value === null) {
         return tasks
     }
-    else if (value) {
+    if (value) {
         return tasks
             .map(task => task.taskName)
             .sort()
             .map(taskName => {
                 return tasks.filter(task => taskName === task.taskName)[0]
             })
-    } else {
+    }
+    else {
         return tasks
             .map(task => task.taskName)
             .reverse()
@@ -55,6 +55,14 @@ export const sortByStatus = (value, tasks) => {
     if (value) return [...arr1, ...arr2]
     else return [...arr2, ...arr1]
 }
-export const sortByPriority = (value) => {
+export const sortByPriority = (value, tasks) => {
+    if (value === null) {
+        return tasks
+    }
+    const arr1 = tasks.filter(task => task.taskPriority === "High")
+    const arr2 = tasks.filter(task => task.taskPriority === "Medium")
+    const arr3 = tasks.filter(task => task.taskPriority === "Low")
 
+    if (value) return [...arr1, ...arr2, ...arr3]
+    else return [...arr3, ...arr2, ...arr1]
 }

@@ -3,7 +3,7 @@ import Task from '../Task'
 import TableHeader from '../TableHeader'
 import TableFooter from '../TableFooter'
 
-import { sortAphabetic, sortByStatus } from '../../logic'
+import { sortAphabetic, sortByStatus, sortByPriority } from '../../logic'
 
 class Tasks extends Component {
 
@@ -18,7 +18,6 @@ class Tasks extends Component {
             sortAlphabetic: null
         }
     }
-
     onPreviousOrNextClick = (previousOrNext) => {
         if (previousOrNext) {
             this.setState({
@@ -44,19 +43,20 @@ class Tasks extends Component {
             }
         })
     }
-
     handleOnTaskName = () => {
         if (this.state.sortOption.sortAlphabetic === null) {
             this.setState({
                 sortOption: {
-                    ...this.state.sortOption,
+                    sortByPriority: null,
+                    sortByStatus: null,
                     sortAlphabetic: true
                 }
             })
         } else
             this.setState({
                 sortOption: {
-                    ...this.state.sortOption,
+                    sortByPriority: null,
+                    sortByStatus: null,
                     sortAlphabetic: !this.state.sortOption.sortAlphabetic
                 }
             })
@@ -65,14 +65,16 @@ class Tasks extends Component {
         if (this.state.sortOption.sortByPriority === null) {
             this.setState({
                 sortOption: {
-                    ...this.state.sortOption,
+                    sortAlphabetic: null,
+                    sortByStatus: null,
                     sortByPriority: true
                 }
             })
         } else
             this.setState({
                 sortOption: {
-                    ...this.state.sortOption,
+                    sortAlphabetic: null,
+                    sortByStatus: null,
                     sortByPriority: !this.state.sortOption.sortByPriority
                 }
             })
@@ -81,14 +83,16 @@ class Tasks extends Component {
         if (this.state.sortOption.sortByStatus === null) {
             this.setState({
                 sortOption: {
-                    ...this.state.sortOption,
+                    sortByPriority: null,
+                    sortAlphabetic: null,
                     sortByStatus: true
                 }
             })
         } else
             this.setState({
                 sortOption: {
-                    ...this.state.sortOption,
+                    sortByPriority: null,
+                    sortAlphabetic: null,
                     sortByStatus: !this.state.sortOption.sortByStatus
                 }
             })
@@ -97,6 +101,9 @@ class Tasks extends Component {
         const { tasks, handleOnDeleteClick, handleOnChange } = this.props
         let sortedTasks = sortAphabetic(this.state.sortOption.sortAlphabetic, tasks)
         sortedTasks = sortByStatus(this.state.sortOption.sortByStatus, sortedTasks)
+        sortedTasks = sortByPriority(this.state.sortOption.sortByPriority, sortedTasks)
+
+        ///////PAGINATION////// too function
         const start = this.state.paginationOption.currentPage * 1
         const end = start * 1 + this.state.paginationOption.resultsPerPage * 1
         const paginatedTasks = sortedTasks.slice(start, end)
