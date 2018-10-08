@@ -37,6 +37,7 @@ export const sortAphabetic = (value, tasks) => {
     else {
         return tasks
             .map(task => task.taskName)
+            .sort()
             .reverse()
             .map(taskName => {
                 return tasks.filter(task => taskName === task.taskName)[0]
